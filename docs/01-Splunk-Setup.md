@@ -168,9 +168,9 @@ scp -r configs/siem-lab user@<vm-ip>:~/splunk-lab/configs/
 
 # Option 2: clone the repo directly on the VM
 git clone .git
-cp SIEM-Detection-Lab/docker-compose.yml ~/splunk-lab/
-cp SIEM-Detection-Lab/.env.example ~/splunk-lab/
-cp -r SIEM-Detection-Lab/configs/siem-lab ~/splunk-lab/configs/
+cp LogHarbor/docker-compose.yml ~/splunk-lab/
+cp LogHarbor/.env.example ~/splunk-lab/
+cp -r LogHarbor/configs/siem-lab ~/splunk-lab/configs/
 ```
 
 Then configure your password:
