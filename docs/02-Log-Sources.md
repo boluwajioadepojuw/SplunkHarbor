@@ -70,7 +70,6 @@ The Security log is the foundation of any SOC. It tracks who logged in, what the
 
 Logs are forwarded via Splunk Universal Forwarder with index-time routing defined in [transforms.conf](../configs/siem-lab/local/transforms.conf):
 
-![Log routing diagram showing 5 Windows log channels routing to 3 Splunk indexes via transforms.conf](../attachments/log-routing.png)
 
 See [configs/siem-lab/local/inputs.conf](../configs/siem-lab/local/inputs.conf) for the full configuration.
 

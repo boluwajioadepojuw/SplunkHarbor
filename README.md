@@ -10,7 +10,6 @@ After setup, you'll open Splunk and run `index=sysmon | stats count by Computer`
 
 ## Architecture
 
-![Architecture diagram showing AD-Lab endpoints sending logs over TCP:9997 to Splunk Server with sysmon, wineventlog, and powershell indexes](attachments/architecture.png)
 
 ## What's Inside
 
@@ -66,7 +65,6 @@ Once the infrastructure is running:
 
 ## Study Path (For Learners)
 
-![Study path progression from Learn Concepts through Build, Know the Data, Study Rules, Attack and Hunt, Tune Alerts, to Create Your Own](attachments/study-path.png)
 
 | Step | What To Do | Guide |
 |---|---|---|
