@@ -82,7 +82,7 @@ For example, this lab's LSASS memory dump detection works like this:
 
 Not every match is a real attack. Legitimate software sometimes behaves in ways that look suspicious to a detection rule. Antivirus software accesses LSASS memory as part of its normal operation. IT admin tools create remote services that look like lateral movement. Backup software touches sensitive registry keys.
 
-This is why **tuning** matters. Tuning means refining your detection rules to reduce false alerts while keeping the ability to catch real attacks. It's one of the most important (and underrated) skills a SOC analyst develops. This lab includes a dedicated [tuning methodology](https://github.com/develku/Detection-Engineering-Lab/blob/main/docs/tuning-methodology.md) and real tuning reports in the [Detection-Engineering-Lab](https://github.com/develku/Detection-Engineering-Lab/tree/main/tuning).
+This is why **tuning** matters. Tuning means refining your detection rules to reduce false alerts while keeping the ability to catch real attacks. It's one of the most important (and underrated) skills a SOC analyst develops. This lab includes a dedicated [tuning methodology](/blob/main/docs/tuning-methodology.md) and real tuning reports in the [Detection-Engineering-Lab](/tree/main/tuning).
 
 ### SPL basics
 
@@ -171,7 +171,7 @@ Think of Sigma like **HTML for detection rules**. You write a web page in HTML o
 
 ### Sigma in this lab
 
-The [Detection-Engineering-Lab](https://github.com/develku/Detection-Engineering-Lab) includes Sigma versions of its detection rules in the [`sigma/`](https://github.com/develku/Detection-Engineering-Lab/tree/main/sigma) directory. Each `.yml` file is a Sigma rule that corresponds to an `.spl` file in the [`detections/`](https://github.com/develku/Detection-Engineering-Lab/tree/main/detections) directory. Studying both side by side is a great way to learn how the two formats relate.
+The [Detection-Engineering-Lab]() includes Sigma versions of its detection rules in the [`sigma/`](/tree/main/sigma) directory. Each `.yml` file is a Sigma rule that corresponds to an `.spl` file in the [`detections/`](/tree/main/detections) directory. Studying both side by side is a great way to learn how the two formats relate.
 
 ---
 
@@ -188,11 +188,11 @@ Here's the big picture — how data flows from an attack to an alert:
 | **Sysmon** | Captures detailed endpoint telemetry | Configured on AD-Lab Windows machines |
 | **Splunk Universal Forwarder** | Ships logs from endpoints to Splunk | Installed on each AD-Lab endpoint |
 | **Splunk Server** | Indexes logs, runs searches, fires alerts | Ubuntu VM ([setup guide](01-Splunk-Setup.md)) |
-| **Detection Rules (SPL)** | Define what suspicious activity looks like | [Detection-Engineering-Lab](https://github.com/develku/Detection-Engineering-Lab/tree/main/detections) |
-| **Sigma Rules** | Vendor-neutral versions of detection rules | [Detection-Engineering-Lab](https://github.com/develku/Detection-Engineering-Lab/tree/main/sigma) |
-| **Dashboards** | Visual overview of security posture | [Detection-Engineering-Lab](https://github.com/develku/Detection-Engineering-Lab/tree/main/dashboards) |
-| **Attack Simulations** | Controlled attacks to test detections | [Attack-Simulation-Lab](https://github.com/develku/Attack-Simulation-Lab/tree/main/simulations) |
-| **Tuning Reports** | Document and reduce false positives | [Detection-Engineering-Lab](https://github.com/develku/Detection-Engineering-Lab/tree/main/tuning) |
+| **Detection Rules (SPL)** | Define what suspicious activity looks like | [Detection-Engineering-Lab](/tree/main/detections) |
+| **Sigma Rules** | Vendor-neutral versions of detection rules | [Detection-Engineering-Lab](/tree/main/sigma) |
+| **Dashboards** | Visual overview of security posture | [Detection-Engineering-Lab](/tree/main/dashboards) |
+| **Attack Simulations** | Controlled attacks to test detections | [Attack-Simulation-Lab](/tree/main/simulations) |
+| **Tuning Reports** | Document and reduce false positives | [Detection-Engineering-Lab](/tree/main/tuning) |
 
 ---
 
@@ -214,7 +214,7 @@ Study [02-Log-Sources.md](02-Log-Sources.md) carefully. Pay special attention to
 
 ### Step 4: Study the detection rules
 
-Read through the [Detection Rules guide](https://github.com/develku/Detection-Engineering-Lab/blob/main/docs/detection-rules.md), then open each `.spl` file in the [detections/](https://github.com/develku/Detection-Engineering-Lab/tree/main/detections) directory. For each rule, ask yourself:
+Read through the [Detection Rules guide](/blob/main/docs/detection-rules.md), then open each `.spl` file in the [detections/](/tree/main/detections) directory. For each rule, ask yourself:
 
 - What attack does this detect?
 - Which log source and Event ID does it use?
@@ -223,7 +223,7 @@ Read through the [Detection Rules guide](https://github.com/develku/Detection-En
 
 ### Step 5: Run attack simulations
 
-Start with [Credential Dumping](https://github.com/develku/Attack-Simulation-Lab/blob/main/simulations/01-credential-dumping.md). Run the controlled attack, then switch to Splunk and watch the alerts fire. This is where theory becomes real. You'll see exactly how an attack looks in log data.
+Start with [Credential Dumping](/blob/main/simulations/01-credential-dumping.md). Run the controlled attack, then switch to Splunk and watch the alerts fire. This is where theory becomes real. You'll see exactly how an attack looks in log data.
 
 ### Step 6: Practice investigation
 
@@ -231,7 +231,7 @@ After each simulation, use the SPL queries provided in the simulation docs to in
 
 ### Step 7: Study tuning reports
 
-Read the tuning reports in the [Detection-Engineering-Lab tuning/](https://github.com/develku/Detection-Engineering-Lab/tree/main/tuning) directory. Understand why false positives happened, how the rules were refined, and what the impact was. Being able to tune detection rules is what separates a junior analyst from an experienced one.
+Read the tuning reports in the [Detection-Engineering-Lab tuning/](/tree/main/tuning) directory. Understand why false positives happened, how the rules were refined, and what the impact was. Being able to tune detection rules is what separates a junior analyst from an experienced one.
 
 ### Step 8: Write your own detection
 

@@ -2,7 +2,7 @@
 
 Splunk-based SIEM infrastructure for security monitoring. Automated deployment with Docker Compose, scripted forwarder setup, and a complete log ingestion pipeline from Windows endpoints.
 
-Integrates with [AD-Lab-Setup](https://github.com/develku/AD-Lab-Setup) for endpoint infrastructure. Detection rules and attack scenarios are in their own repos — see [Related Projects](#related-projects).
+Integrates with [[AD-Lab-Setup]]() for endpoint infrastructure. Detection rules and attack scenarios are in their own repos — see [Related Projects](#related-projects).
 
 ## What You'll End Up With
 
@@ -23,7 +23,7 @@ After setup, you'll open Splunk and run `index=sysmon | stats count by Computer`
 
 ### Prerequisites
 
-- [AD-Lab-Setup](https://github.com/develku/AD-Lab-Setup) deployed (DC + workstations with Sysmon)
+- [[AD-Lab-Setup]]() deployed (DC + workstations with Sysmon)
 - **Docker Compose** (recommended) or **Ubuntu Server VM** for Splunk — see [Setup Guide](docs/01-Splunk-Setup.md)
 
 ### Step 1: Deploy Splunk Server
@@ -61,8 +61,8 @@ See [01-Splunk-Setup.md](docs/01-Splunk-Setup.md) for detailed instructions on b
 
 Once the infrastructure is running:
 
-- Load detection rules from [Detection-Engineering-Lab](https://github.com/develku/Detection-Engineering-Lab)
-- Run attack scenarios from [Attack-Simulation-Lab](https://github.com/develku/Attack-Simulation-Lab)
+- Load detection rules from [Detection-Engineering-Lab]()
+- Run attack scenarios from [Attack-Simulation-Lab]()
 
 ## Study Path (For Learners)
 
@@ -73,9 +73,9 @@ Once the infrastructure is running:
 | 1 | **Learn the concepts** — Understand what a SIEM is, how Sysmon works, what MITRE ATT&CK means | [Learning Guide](docs/00-Learning-Guide.md) + [Glossary](docs/GLOSSARY.md) |
 | 2 | **Build the lab** — Deploy Splunk, configure forwarders, verify log ingestion | [Splunk Setup](docs/01-Splunk-Setup.md) |
 | 3 | **Know the data** — Study each log source, learn critical Event IDs | [Log Sources](docs/02-Log-Sources.md) |
-| 4 | **Study detection rules** — Read each rule, understand SPL syntax and what it catches | [Detection-Engineering-Lab](https://github.com/develku/Detection-Engineering-Lab) |
-| 5 | **Attack and hunt** — Execute scenarios, watch alerts fire, practice investigation | [Attack-Simulation-Lab](https://github.com/develku/Attack-Simulation-Lab) |
-| 6 | **Tune alerts** — Read tuning reports, understand false positives, reduce noise | [Detection-Engineering-Lab — Tuning](https://github.com/develku/Detection-Engineering-Lab/tree/main/tuning) |
+| 4 | **Study detection rules** — Read each rule, understand SPL syntax and what it catches | [Detection-Engineering-Lab]() |
+| 5 | **Attack and hunt** — Execute scenarios, watch alerts fire, practice investigation | [Attack-Simulation-Lab]() |
+| 6 | **Tune alerts** — Read tuning reports, understand false positives, reduce noise | [Detection-Engineering-Lab — Tuning](/tree/main/tuning) |
 | 7 | **Create your own** — Write a detection rule for a technique not yet covered | [MITRE ATT&CK](https://attack.mitre.org/) |
 
 ## Documentation
@@ -120,7 +120,7 @@ This lab is part of a multi-project SOC environment:
 
 | Project | Purpose |
 |---|---|
-| [AD-Lab-Setup](https://github.com/develku/AD-Lab-Setup) | Windows Active Directory infrastructure |
+| [[AD-Lab-Setup]]() | Windows Active Directory infrastructure |
 | **SplunkAtelier** (this repo) | Splunk SIEM deployment and log collection |
-| [Detection-Engineering-Lab](https://github.com/develku/Detection-Engineering-Lab) | Detection rules, dashboards, and tuning |
-| [Attack-Simulation-Lab](https://github.com/develku/Attack-Simulation-Lab) | Adversary emulation and attack validation |
+| [Detection-Engineering-Lab]() | Detection rules, dashboards, and tuning |
+| [Attack-Simulation-Lab]() | Adversary emulation and attack validation |

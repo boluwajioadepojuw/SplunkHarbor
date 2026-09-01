@@ -5,7 +5,7 @@ After completing this guide, you'll have:
 - **Splunk Web UI** running at `http://localhost:8000` (or your VM's IP)
 - **Three custom indexes** — `sysmon`, `wineventlog`, `powershell` — receiving forwarded logs
 - **Universal Forwarders** on your AD-Lab Windows endpoints shipping Sysmon, Security, System, and PowerShell logs to Splunk over TCP port 9997
-- Detection-ready infrastructure for the rules in [Detection-Engineering-Lab](https://github.com/develku/Detection-Engineering-Lab)
+- Detection-ready infrastructure for the rules in [Detection-Engineering-Lab]()
 
 > **What is Splunk Free?** Splunk Enterprise running without a paid license. It provides the same search engine, indexing, and SPL query language as the full product. The main limitations: **500 MB/day indexing cap** (plenty for a home lab with a few endpoints), no built-in alerting (you run saved searches manually or on a schedule), and no role-based access control beyond the single admin account. For learning SIEM operations, these limitations don't matter — the search and analysis experience is identical to what SOC teams use in production.
 
@@ -167,7 +167,7 @@ scp docker-compose.yml .env.example user@<vm-ip>:~/splunk-lab/
 scp -r configs/siem-lab user@<vm-ip>:~/splunk-lab/configs/
 
 # Option 2: clone the repo directly on the VM
-git clone https://github.com/develku/SIEM-Detection-Lab.git
+git clone .git
 cp SIEM-Detection-Lab/docker-compose.yml ~/splunk-lab/
 cp SIEM-Detection-Lab/.env.example ~/splunk-lab/
 cp -r SIEM-Detection-Lab/configs/siem-lab ~/splunk-lab/configs/
@@ -460,7 +460,7 @@ Before deploying forwarders, verify two things on each Windows endpoint:
 
 **1. Sysmon is installed and running**
 
-The forwarder collects Sysmon logs, so Sysmon must be installed first. If you followed [AD-Lab-Setup](https://github.com/develku/AD-Lab-Setup), this is already done. Verify:
+The forwarder collects Sysmon logs, so Sysmon must be installed first. If you followed [AD-Lab-Setup](), this is already done. Verify:
 
 ```powershell
 # Most reliable check — the event log channel name is fixed regardless of how Sysmon was installed
@@ -471,7 +471,7 @@ Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational" -MaxEvents 1
 # If it throws "There is not an event log," Sysmon is NOT installed.
 ```
 
-If Sysmon is not installed, go back to [AD-Lab-Setup](https://github.com/develku/AD-Lab-Setup) and complete the Sysmon deployment before continuing.
+If Sysmon is not installed, go back to [AD-Lab-Setup]() and complete the Sysmon deployment before continuing.
 
 **2. Network connectivity to the Splunk server**
 
@@ -640,5 +640,5 @@ This is a lab environment, but understanding these tradeoffs prepares you for pr
 ## Next Steps
 
 - [Configure Log Sources](02-Log-Sources.md) — understand what each log source provides
-- [Deploy Detection Rules](https://github.com/develku/Detection-Engineering-Lab) — start detecting threats
-- [Run Attack Simulations](https://github.com/develku/Attack-Simulation-Lab) — validate your detections
+- [Deploy Detection Rules]() — start detecting threats
+- [Run Attack Simulations]() — validate your detections
