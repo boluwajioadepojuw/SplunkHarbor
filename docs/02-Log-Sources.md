@@ -94,7 +94,7 @@ index=* | stats latest(_time) as last_seen by host | eval status=if(last_seen > 
 
 ## Audit Policy Requirements
 
-For full Security log visibility, ensure these audit policies are enabled on all endpoints (configured via GPO in [AD-Lab-Setup](https://github.com/develku/AD-Lab-Setup)):
+For full Security log visibility, ensure these audit policies are enabled on all endpoints (configured via GPO in [AD-Lab-Setup]()):
 
 | Category | Subcategory | Setting |
 |---|---|---|
