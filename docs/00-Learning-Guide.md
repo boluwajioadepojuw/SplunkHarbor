@@ -179,7 +179,6 @@ The [Detection-Engineering-Lab]() includes Sigma versions of its detection rules
 
 Here's the big picture — how data flows from an attack to an alert:
 
-![Detection pipeline: Attack Happens → Sysmon Captures → UF Forwards → Splunk Indexes → Rule Matches → Alert Fires → You Investigate](../attachments/detection-pipeline.png)
 
 ### Which component handles what
 
