@@ -1,4 +1,4 @@
-# SplunkAtelier
+# LogHarbor
 
 Splunk-based SIEM infrastructure for security monitoring. Automated deployment with Docker Compose, scripted forwarder setup, and a complete log ingestion pipeline from Windows endpoints.
 
@@ -90,7 +90,7 @@ Once the infrastructure is running:
 ## Project Structure
 
 ```
-SplunkAtelier/
+LogHarbor/
 ├── README.md                           # This file
 ├── docker-compose.yml                  # Splunk Docker deployment
 ├── .env.example                        # Environment variable template
@@ -121,6 +121,6 @@ This lab is part of a multi-project SOC environment:
 | Project | Purpose |
 |---|---|
 | [[AD-Lab-Setup]]() | Windows Active Directory infrastructure |
-| **SplunkAtelier** (this repo) | Splunk SIEM deployment and log collection |
+| **LogHarbor** (this repo) | Splunk SIEM deployment and log collection |
 | [Detection-Engineering-Lab]() | Detection rules, dashboards, and tuning |
 | [Attack-Simulation-Lab]() | Adversary emulation and attack validation |
