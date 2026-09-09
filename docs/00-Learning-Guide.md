@@ -53,7 +53,7 @@ made it.
 
 | Capability | Why It Matters |
 |---|---|
-| Process creation with full command lines | See exactly what ran, not just the program name |
+| Process creation with full command lines | See exactly what ran, not only the program name |
 | Parent-child process relationships | Know that powershell.exe was launched by excel.exe |
 | Network connections with process context | See which process called a suspicious IP |
 | DNS queries per process | Know that rundll32.exe resolved a strange domain |
