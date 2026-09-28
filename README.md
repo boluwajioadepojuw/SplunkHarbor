@@ -1,4 +1,4 @@
-# LogHarbor
+# SplunkHarbor
 
 A Splunk SIEM lab that stands up on one Linux machine. Docker Compose
 deployment, scripted forwarder setup, and a working ingestion path for
@@ -22,9 +22,9 @@ in one place.
 
 - `docker-compose.yml`: the full Splunk stack, one command to start
 - `setup/`: install and configuration scripts
-  - `01-Install-Splunk.sh`: unattended Splunk Enterprise install
-  - `02-Configure-Inputs.sh`: index and input configuration
-  - `03-Deploy-Forwarder.ps1`: Windows endpoint forwarder deployment
+  - `install-splunk.sh`: unattended Splunk Enterprise install
+  - `configure-inputs.sh`: index and input configuration
+  - `deploy-forwarder.ps1`: Windows endpoint forwarder deployment
 - `docs/`: a step-by-step guide from first login to writing SPL
   detections
 - `configs/`: ready-to-use Splunk app configuration
@@ -51,3 +51,14 @@ Boluwaji Oluwaseyi Adepoju
 ## License
 
 MIT
+
+## Data flow
+
+```mermaid
+flowchart LR
+    A[Windows endpoint] -->|Sysmon + Security logs| B[Universal Forwarder]
+    B -->|splunktcp 9997| C[Splunk receiver]
+    C --> D[(win index)]
+    D --> E[SPL searches: brute force, encoded PowerShell, scheduled tasks, lateral movement, persistence]
+    E --> F[alert -> triage walkthrough]
+```

@@ -1,0 +1,4 @@
+index=win sourcetype=WinEventLog:Security EventCode=4624 LogonType=3
+| search ShareName=*
+| stats count by _time, src_ip, user, ShareName
+| sort - count
