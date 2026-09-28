@@ -1,0 +1,3 @@
+index=win sourcetype=WinEventLog:Microsoft-Windows-Sysmon/Operational EventCode=13
+| search TargetObject="*CurrentVersion\\Run*" OR TargetObject="*Startup*"
+| table _time, host, Image, TargetObject, Details
