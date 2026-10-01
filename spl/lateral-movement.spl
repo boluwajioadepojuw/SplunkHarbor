@@ -1,4 +1,6 @@
-index=win sourcetype=WinEventLog:Security EventCode=4624 LogonType=3
-| search ShareName=*
+`Lateral movement: network share access (5140). ShareName lives on 5140, not on 4624 logons, so this search actually returns rows.`
+index=wineventlog sourcetype="*WinEventLog:Security" EventCode=5140
+| eval src_ip = coalesce(src_ip, IpAddress, "unknown")
+| eval user = coalesce(user, SubjectUserName, "unknown")
 | stats count by _time, src_ip, user, ShareName
 | sort - count

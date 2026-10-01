@@ -1,4 +1,6 @@
-index=win sourcetype=WinEventLog:Security EventCode=4625
+`Brute force: 4625 failed logons clustered per source over 5 minutes. Tune the count threshold for noisy auth sources.`
+index=wineventlog sourcetype="*WinEventLog:Security" EventCode=4625
+| eval src_ip = coalesce(src_ip, IpAddress, "unknown")
 | bin _time span=5m
 | stats count by _time, src_ip
 | where count > 5

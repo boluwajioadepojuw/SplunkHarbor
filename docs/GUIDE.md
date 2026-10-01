@@ -18,29 +18,50 @@ Windows box is available.
 
 ## Setup order
 
-1. Download the Splunk .deb (free account at splunk.com).
-2. Run install-splunk.sh on the Linux box: installs Splunk Free, starts it,
-   sets the admin password, enables boot start.
-3. Run configure-inputs.sh: opens TCP 9997 and creates the 'win' index.
-4. On the Windows endpoint, run deploy-forwarder.ps1 -SplunkHost <linux-ip>:
+1. Copy `.env.example` to `.env` and set `LH_PASSWORD` (Docker path), or
+   download the Splunk .deb from a free splunk.com account (bare-metal path).
+2. Docker: `docker compose up -d` - the stack mounts
+   `configs/logharbor/local` into the receiver app, so inputs, index
+   routing and the five saved searches are live on first boot.
+   Bare-metal: run `install-splunk.sh`, then `configure-inputs.sh`
+   (deploys the same repo configs and opens TCP 9997).
+3. On the Windows endpoint, run `deploy-forwarder.ps1 -SplunkHost <linux-ip>`:
    installs the Universal Forwarder silently, points it at the receiver,
    enables Security/System/Application logs plus Sysmon.
-5. Verify: in Splunk search 'index=win | stats count by host' and you should
-   see the endpoint name.
+4. Verify: in Splunk search `index=sysmon OR index=wineventlog
+   | stats count by host` and you should see the endpoint name.
 
 ## The detection part (spl/)
 
 The spl/ folder holds the searches that turn this into a detection lab:
 
-- brute force: failed logons clustered by source
+- brute force: failed logons (4625) clustered by source
 - encoded powershell: -EncodedCommand or -enc on the command line
 - scheduled tasks: schtasks /create from a shell
-- lateral movement: SMB/admin-share access attempts
+- lateral movement: network share access (5140) - the event that carries
+  ShareName
 - persistence: Run key and startup folder writes
 
-Each search file has a comment explaining what it catches and what to tune.
+Each search file starts with a backtick comment explaining what it catches
+and what to tune. The same five searches ship as saved searches in
+`configs/logharbor/local/savedsearches.conf` (cron every 5 minutes; the
+brute-force search also fires a webhook - replace the placeholder URL).
 See spl/triage-walkthrough.md for a worked example: an alert fires, you
 confirm it, you scope it, you write it up.
+
+## Index routing
+
+Events land in three indexes: sysmon, wineventlog and powershell
+(configs/logharbor/local: props.conf + transforms.conf + indexes.conf).
+Searches use the index that matches their source - that keeps every query
+scanning only the data it needs.
+
+## Field extraction note
+
+The searches coalesce `src_ip`/`IpAddress` and `user`/`SubjectUserName`,
+so they return results with or without the Splunk Add-on for Windows.
+The HEC demo path and the rendered-XML forwarder path are both covered by
+the sourcetype stanzas in props.conf.
 
 ## Why the pieces are named this way
 

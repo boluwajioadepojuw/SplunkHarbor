@@ -1,3 +1,4 @@
-index=win sourcetype=WinEventLog:Microsoft-Windows-Sysmon/Operational EventCode=1
+`Scheduled tasks: schtasks /create executions (Sysmon 1). Check the parent process and the task name in the command line.`
+index=sysmon sourcetype="*WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1
 | search Image="*schtasks.exe" CommandLine="*/create*"
 | table _time, host, User, ParentImage, CommandLine

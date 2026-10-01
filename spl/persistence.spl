@@ -1,3 +1,4 @@
-index=win sourcetype=WinEventLog:Microsoft-Windows-Sysmon/Operational EventCode=13
-| search TargetObject="*CurrentVersion\\Run*" OR TargetObject="*Startup*"
+`Persistence: registry Run key and startup folder writes (Sysmon 13). Correlate with the process that wrote the value.`
+index=sysmon sourcetype="*WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=13
+| search TargetObject="*CurrentVersion\Run*" OR TargetObject="*Startup*"
 | table _time, host, Image, TargetObject, Details
