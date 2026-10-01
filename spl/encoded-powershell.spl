@@ -1,3 +1,4 @@
-index=win sourcetype=WinEventLog:Microsoft-Windows-Sysmon/Operational EventCode=1
+`Encoded PowerShell: Sysmon process creation with -EncodedCommand/-enc on the command line. Decode the payload to confirm.`
+index=sysmon sourcetype="*WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1
 | search CommandLine="*EncodedCommand*" OR CommandLine="*-enc*" OR CommandLine="*-e *"
 | table _time, host, Image, ParentImage, CommandLine

@@ -5,13 +5,14 @@ services:
     container_name: splunkharbor-splunk
     environment:
       SPLUNK_START_ARGS: --accept-license
-      SPLUNK_PASSWORD: "${LH_PASSWORD:-changeme123}"
+      SPLUNK_PASSWORD: "${LH_PASSWORD:?set LH_PASSWORD in .env (copy .env.example)}"
       SPLUNK_APPS_URL: ""
     ports:
       - "8000:8000"
       - "9997:9997"
     volumes:
-      - ./configs/splunkharbor/local/inputs.conf:/opt/splunk/etc/apps/splunkharbor_receiver/local/inputs.conf:ro
+      # the whole app config: inputs, props, transforms, indexes, saved searches
+      - ./configs/logharbor/local:/opt/splunk/etc/apps/splunkharbor_receiver/local:ro
       - splunk-etc:/opt/splunk/etc
       - splunk-var:/opt/splunk/var
 volumes:
