@@ -52,6 +52,12 @@ Boluwaji Oluwaseyi Adepoju
 
 MIT
 
+## Screenshots
+
+- [Rendered README](screenshots/splunkharbor-readme.png)
+- [Deployment validation: compose config + script syntax](screenshots/splunkharbor-validation.png)
+- [SPL detection content](screenshots/splunkharbor-spl.png)
+
 ## Data flow
 
 ```mermaid
