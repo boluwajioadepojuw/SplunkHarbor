@@ -34,6 +34,7 @@ in one place.
 - `setup/`: install and configuration scripts
   - `install-splunk.sh`: unattended Splunk Enterprise install
   - `configure-inputs.sh`: deploys the repo config into the app
+  - `create-hec-token.sh`: enables HEC and creates the replay token
   - `deploy-forwarder.ps1`: Windows endpoint forwarder deployment
 - `docs/`: a step-by-step guide from first login to writing SPL
   detections

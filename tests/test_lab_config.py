@@ -71,3 +71,9 @@ def test_shell_scripts_are_valid_bash():
 def test_env_example_uses_lh_password():
     text = (ROOT / ".env.example").read_text()
     assert "LH_PASSWORD=" in text
+
+
+def test_hec_token_script_present():
+    text = (ROOT / "setup" / "create-hec-token.sh").read_text()
+    assert "http-event-collector" in text
+    assert "LH_PASSWORD" in text
