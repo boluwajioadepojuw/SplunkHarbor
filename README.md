@@ -54,6 +54,10 @@ MIT
 
 ## Screenshots
 
+Live Splunk from the compose stack (splunk/splunk:9.4, captured 01/10/2026):
+
+- [Splunk login](screenshots/splunkharbor-splunk-login.png)
+- [Splunk home after login](screenshots/splunkharbor-splunk-home.png)
 - [Rendered README](screenshots/splunkharbor-readme.png)
 - [Deployment validation: compose config + script syntax](screenshots/splunkharbor-validation.png)
 - [SPL detection content](screenshots/splunkharbor-spl.png)
