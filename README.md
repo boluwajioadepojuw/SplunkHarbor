@@ -59,7 +59,6 @@ Live Splunk from the compose stack (splunk/splunk:9.4, captured 01/10/2026):
 - [Splunk login](screenshots/splunkharbor-splunk-login.png)
 - [Splunk home after login](screenshots/splunkharbor-splunk-home.png)
 - [Search with real results](screenshots/splunkharbor-splunk-search.png)
-- [Indexes page showing the win index](screenshots/splunkharbor-splunk-indexes.png)
 
 ## Data flow
 
