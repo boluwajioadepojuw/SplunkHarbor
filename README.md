@@ -56,7 +56,6 @@ MIT
 
 Live Splunk from the compose stack (splunk/splunk:9.4, captured 01/10/2026):
 
-- [Splunk login](screenshots/splunkharbor-splunk-login.png)
 - [Splunk home after login](screenshots/splunkharbor-splunk-home.png)
 - [The five detection searches running in the live instance](screenshots/splunkharbor-splunk-searches.png)
 
