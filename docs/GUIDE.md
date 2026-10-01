@@ -30,6 +30,10 @@ Windows box is available.
    enables Security/System/Application logs plus Sysmon.
 4. Verify: in Splunk search `index=sysmon OR index=wineventlog
    | stats count by host` and you should see the endpoint name.
+5. Optional, for the dataset replay: `setup/create-hec-token.sh` enables
+   the HTTP Event Collector and creates a token (saved to
+   /tmp/lh-hec-token.txt). Then run SOCAtelier's
+   datasets/splunk-replay/replay_to_splunk.py with that token.
 
 ## The detection part (spl/)
 
@@ -59,9 +63,26 @@ scanning only the data it needs.
 ## Field extraction note
 
 The searches coalesce `src_ip`/`IpAddress` and `user`/`SubjectUserName`,
-so they return results with or without the Splunk Add-on for Windows.
-The HEC demo path and the rendered-XML forwarder path are both covered by
-the sourcetype stanzas in props.conf.
+so they return results with or without the Splunk Add-on for Windows
+(TA-windows). The HEC demo path and the rendered-XML forwarder path are
+both covered by the sourcetype stanzas in props.conf.
+
+### TA-windows (recommended for the real forwarder path)
+
+With a real Windows endpoint sending via the Universal Forwarder, install
+Splunk_TA_windows on the receiver for full CIM-compliant extraction:
+
+1. Download Splunk_TA_windows from splunkbase (free).
+2. Install: Splunk Web -> Apps -> Manage Apps -> Install app from file,
+   or copy the .spl into /opt/splunk/etc/apps/ and restart.
+3. Verify extraction: search
+   `index=wineventlog sourcetype="*WinEventLog:Security" EventCode=4625
+   | table src_ip, user, LogonType` - with the TA installed, `src_ip`
+   and `user` are populated by the add-on; without it, the coalesce
+   fallbacks in the searches still keep the detections working.
+
+The coalesce pattern means the five detections are correct in both modes;
+the TA adds richer CIM fields (per-data-model user/src fields) for hunts.
 
 ## Why the pieces are named this way
 
