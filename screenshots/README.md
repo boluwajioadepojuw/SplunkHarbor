@@ -7,3 +7,4 @@ compose stack (splunk/splunk:9.4).
 | --- | --- |
 | splunkharbor-splunk-home.png | Splunk home after logging in as admin |
 | splunkharbor-splunk-searches.png | The five LH detection searches saved in the instance, with their SPL |
+| splunkharbor-detection-fired.png | The brute-force detection firing in the UI: 8 failed logons from one source |
