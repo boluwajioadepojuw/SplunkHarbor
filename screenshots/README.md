@@ -6,4 +6,4 @@ compose stack (splunk/splunk:9.4).
 | File | What it shows |
 | --- | --- |
 | splunkharbor-splunk-searches.png | The five LH detection searches saved in the instance, with their SPL |
-| splunkharbor-detection-fired.png | The brute-force detection firing in the UI: 8 failed logons from one source |
+| splunkharbor-dashboard.png | The security dashboard: four detection panels with live results |

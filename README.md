@@ -57,7 +57,7 @@ MIT
 Live Splunk from the compose stack (splunk/splunk:9.4, captured 01/10/2026):
 
 - [The five detection searches running in the live instance](screenshots/splunkharbor-splunk-searches.png)
-- [Brute-force detection firing: 8 failed logons from one source](screenshots/splunkharbor-detection-fired.png)
+- [The security dashboard: brute force, encoded PowerShell, persistence and event totals](screenshots/splunkharbor-dashboard.png)
 
 ## Data flow
 
