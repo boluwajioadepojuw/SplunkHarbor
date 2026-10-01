@@ -11,6 +11,13 @@ Every machine you point the forwarder at shows up in the index: logons,
 process starts, PowerShell activity, DNS lookups. All of it searchable
 in one place.
 
+## Where each part runs
+
+- Splunk receiver: Linux, Docker (this machine)
+- Windows endpoint: via deploy-forwarder.ps1 when a Windows box is available
+- Demo data in the screenshots: Windows-shaped events (Sysmon/Security) sent
+  to the HTTP Event Collector from the Linux lab machine
+
 ## Log sources
 
 - **Sysmon**: process, network, file, registry, and DNS telemetry

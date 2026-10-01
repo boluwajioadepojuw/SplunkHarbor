@@ -5,9 +5,16 @@ what each piece is for and how to verify it works.
 
 ## What this lab is
 
-A single-machine Splunk receiver plus a Windows endpoint running Sysmon
-through the Universal Forwarder. Together they give you the same pipeline a
-real SOC L1 watches: endpoint events land in Splunk, and you hunt with SPL.
+Two roles: the Splunk receiver runs on Linux (this machine, Docker), and
+the Windows endpoint sends Sysmon and Security logs through the Universal
+Forwarder. Together they give you the same pipeline a real SOC L1 watches:
+endpoint events land in Splunk, and you hunt with SPL.
+
+Lab reality note: this repo was built on a single Linux machine, so the
+live screenshots were produced with the receiver in Docker and Windows-shaped
+events (Sysmon EID 1/13, Security 4624/4625) sent through the HTTP Event
+Collector. The forwarder path (deploy-forwarder.ps1) is ready for the day a
+Windows box is available.
 
 ## Setup order
 
