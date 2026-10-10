@@ -46,11 +46,11 @@ New-Item -ItemType Directory -Force -Path $InputsPath | Out-Null
 $InputsConf = @"
 [WinEventLog://Microsoft-Windows-Sysmon/Operational]
 disabled = 0
-index = win
+index = sysmon
 renderXml = false
 "@
 Set-Content -Path ($InputsPath + "\inputs.conf") -Value $InputsConf
 
 Write-Step "restarting the forwarder service"
 Restart-Service SplunkForwarder
-Write-Step "done - check Splunk with: index=win | stats count by host"
+Write-Step "done - check Splunk with: index=sysmon | stats count by host"
