@@ -1,0 +1,51 @@
+<dashboard version="1.1">
+  <label>LH - Security Overview</label>
+  <description>Lab security posture: brute force, encoded PowerShell, persistence and total volume.</description>
+  <row>
+    <panel>
+      <title>Brute force: failed logons by source (5m windows, &gt;5)</title>
+      <table>
+        <search>
+          <query>index=wineventlog EventCode=4625 | eval src_ip = coalesce(src_ip, IpAddress, "unknown") | bin _time span=5m | stats count by _time, src_ip | where count &gt; 5 | sort - count</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Encoded PowerShell executions</title>
+      <table>
+        <search>
+          <query>index=sysmon EventCode=1 CommandLine=*-enc* | table _time, host, Image, CommandLine</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Run key persistence</title>
+      <table>
+        <search>
+          <query>index=sysmon EventCode=13 TargetObject=*Run* | table _time, host, Image, TargetObject</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Total events in the lab indexes</title>
+      <single>
+        <search>
+          <query>index=wineventlog OR index=sysmon | stats count</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+</dashboard>

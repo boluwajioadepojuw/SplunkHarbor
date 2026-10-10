@@ -1,0 +1,52 @@
+<dashboard version="1.1">
+  <label>LH - Access and Lateral Movement</label>
+  <description>Logon activity: brute force failures and share access.</description>
+  <row>
+    <panel>
+      <title>Brute force attempts over time</title>
+      <chart>
+        <search>
+          <query>index=wineventlog EventCode=4625 | timechart span=1m count</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="drilldown">none</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Share access (EventCode 5140)</title>
+      <table>
+        <search>
+          <query>index=wineventlog EventCode=5140 | eval src_ip = coalesce(src_ip, IpAddress, "unknown") | eval user = coalesce(user, SubjectUserName, "unknown") | table _time, host, user, src_ip, ShareName</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Failed logons by source and account</title>
+      <table>
+        <search>
+          <query>index=wineventlog EventCode=4625 | eval src_ip = coalesce(src_ip, IpAddress, "unknown") | stats count by src_ip, TargetUserName | sort - count</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Share access events</title>
+      <single>
+        <search>
+          <query>index=wineventlog EventCode=5140 | stats count</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,51 @@
+<dashboard version="1.1">
+  <label>LH - Endpoint Threat</label>
+  <description>Execution and persistence detections from the lab feed.</description>
+  <row>
+    <panel>
+      <title>Encoded PowerShell</title>
+      <table>
+        <search>
+          <query>index=sysmon EventCode=1 CommandLine=*-enc* | table _time, host, Image, CommandLine</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Scheduled task creation</title>
+      <table>
+        <search>
+          <query>index=sysmon EventCode=1 Image=*schtasks* | table _time, host, Image, CommandLine</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Run key writes</title>
+      <table>
+        <search>
+          <query>index=sysmon EventCode=13 TargetObject=*Run* | table _time, host, Image, TargetObject</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+    <panel>
+      <title>PowerShell executions</title>
+      <single>
+        <search>
+          <query>index=sysmon EventCode=1 Image=*powershell* | stats count</query>
+          <earliest>-24h</earliest>
+          <latest>now</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+</dashboard>
