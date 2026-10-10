@@ -19,6 +19,9 @@ in one place.
 - Windows endpoint: via deploy-forwarder.ps1 when a Windows box is available
 - Demo data in the screenshots: Windows-shaped events (Sysmon/Security) sent
   to the HTTP Event Collector from the Linux lab machine
+- Replayable demo dataset: [demo/](demo/) ships real Mordor captures plus a
+  labeled 4625 burst; [demo/README.md](demo/README.md) has the two commands
+  that reproduce the dashboards end to end
 
 ## Log sources
 
